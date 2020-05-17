@@ -1,0 +1,20 @@
+<% if user_signed_in? && current_user.likes?(likeable) %>
+  <%= simple_form_for([likeable, Like.new], method: :delete, id: likeable.id, remote: true) do |f| %>
+    <%= f.hidden_field :likeable, :value => likeable.id %>
+    <%= button_tag(type: 'submit', class: "button-like") do %>
+      <i class="fas fa-heart"></i>
+    <% end %>
+  <% end %>
+<% else %>
+  <%= simple_form_for([likeable, Like.new], html: { method: :post }, remote: true) do |f| %>
+    <%= button_tag(type: 'submit', class: "button-like") do %>
+      <i class="far fa-heart"></i>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="likes-image">
+<% likeable.likes.each do |like| %>
+  <%= gravatar_image_tag(like.user.email.gsub('span', 'mdeering'), alt: like.user.name, gravatar: { size: 25 }) %>
+<% end %>
+</div>

@@ -1,0 +1,13 @@
+<% commentable.comments.each do |comment| %>
+  <div class="card mb-3">
+    <div class="card-body d-flex align-items-center">
+      <div class="">
+        <h4><%= comment.user.name %> </h4>
+        <p><%= comment.body %></p>
+      </div>
+      <div class="ml-auto d-flex flex-column">
+        <small class=""><%= format_date comment.created_at %></small>
+      </div>
+    </div>
+  </div>
+<% end %>

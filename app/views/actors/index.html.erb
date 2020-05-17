@@ -1,0 +1,21 @@
+
+<h1 class="text-center mb-5">Actors</h1>
+
+<div class="container">
+  <%= link_to 'New Actor', new_actor_path, class: "btn btn-primary ml-5 mb-4 w-25" %>
+    <div class="d-flex flex-wrap justify-content-center">
+<% @actors.each do |actor| %>
+  <div class="card mb-2 mx-4" style="width: 18rem;">
+    <img src="<%= actor.image %>" class="card-img-top">
+    <div class="card-body">
+      <h5 class="card-title"><%= link_to actor.name, actor_path(actor) %></h5>
+      <%= link_to 'Edit', edit_actor_path(actor), class: "btn btn-primary" %>
+      <%= link_to 'Delete', actor_path(actor), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
+      <div id="<%= actor.id %>_likes" class="likes">
+        <%= render 'likes/likes', likeable: actor %>
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
+</div>
