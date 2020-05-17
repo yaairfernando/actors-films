@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
   has_many :notifications, as: :recipient
+  has_many :events
   
   def downcase
     email.downcase!

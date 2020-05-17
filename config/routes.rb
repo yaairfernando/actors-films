@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   root 'home#index'
+  resources :events
   devise_for :users, :controllers => {:registrations => "registrations"}
-
+  
+  resources :users do
+    member do
+      post :follow
+    end
+  end
   resources :actors do
     resources :comments, module: :actors, only: [:create, :destroy]
     resources :likes, module: :actors, only: [:create, :destroy]
