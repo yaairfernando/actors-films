@@ -20,6 +20,9 @@
  @import '@fortawesome/fontawesome-free/scss/brands';
  @import 'bootstrap/scss/bootstrap';
 
+ body {
+   position: relative;
+ }
 
  .card-img-top {
    height: 23rem;
@@ -59,3 +62,24 @@
   }
  }
 
+
+
+
+
+
+ // NOTIFICATIONS
+ #notifications {
+  width: 25rem;
+  position: absolute;
+  top: 20%;
+  right: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.5s ease;
+ }
+
+ #notifications.show {
+   z-index: 10;
+   opacity: 1;
+   transform: translateX(-100px);
+ }
