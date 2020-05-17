@@ -8,6 +8,10 @@ class CommentsController < ApplicationController
     redirect_to @commentable, notice: "Comment created!!"
   end
 
+  def destroy
+    byebug
+  end
+
   private
 
   def comment_params

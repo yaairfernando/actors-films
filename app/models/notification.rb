@@ -4,6 +4,7 @@ class Notification < ApplicationRecord
   belongs_to :notifiable, polymorphic: true
 
   after_commit ->{
+    # byebug
     if self.m_name == 'Film'
       film = Film.find(self.m_id)
       NotificationRelayJob.perform_later(self, "your film", film)

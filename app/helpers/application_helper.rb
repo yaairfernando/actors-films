@@ -24,10 +24,13 @@ module ApplicationHelper
 
   def create_notification likeable
     if @likeable.is_a?(Film)
+      puts "-----------------------------"
+      puts "IT IS A FILM....."
+      puts "-----------------------------"
       recipient = Film.find(@likeable.id).creator
       user = current_user
       film_id = @likeable.id
-      notification = Notification.find_by(:recipient_id => recipient.id, :user_id => user.id, :m_id => film_id)
+      notification = Notification.find_by(:recipient_id => recipient.id, :user_id => user.id, :m_id => film_id, m_name: "Film")
       if notification.nil?
         Notification.create(recipient: recipient, user: user, action: "liked", notifiable: recipient, m_name: "Film", m_id: film_id )
       else
@@ -36,10 +39,13 @@ module ApplicationHelper
     end
 
     if @likeable.is_a?(Actor)
+      puts "-----------------------------"
+      puts "IT IS AM ACTOR....."
+      puts "-----------------------------"
       recipient = Actor.find(@likeable.id).creator
       user = current_user
       actor_id = @likeable.id
-      notification = Notification.find_by(:recipient_id => recipient.id, :user_id => user.id, :m_id => actor_id)
+      notification = Notification.find_by(:recipient_id => recipient.id, :user_id => user.id, :m_id => actor_id, m_name: "Actor")
       if notification.nil?
         Notification.create(recipient: recipient, user: user, action: "liked", notifiable: recipient, m_name: "Actor", m_id: actor_id )
       else

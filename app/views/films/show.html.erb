@@ -5,6 +5,10 @@
         <div class="card-body">
           <h5 class="card-title"><%= link_to @film.name, film_path(@film) %></h5>
           <%= link_to 'Back', films_path, class: "btn btn-primary" %>
+          <div id="<%= @film.id %>_likes" class="likes">
+            <%= render 'likes/likes', likeable: @film %>
+            <%= link_to 'Delete', film_like_path(@film), method: :delete %>
+          </div>
         </div>
     </div>
   </div>

@@ -12,7 +12,8 @@
           <% if user_signed_in? && film.creator.id === current_user.id %>
             <%= link_to 'Edit', edit_film_path(film), class: "btn btn-primary" %>
             <%= link_to 'Delete', film_path(film), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
-          <%end%>
+          <% end %>
+          
           <div id="<%= film.id %>_likes" class="likes">
             <%= render 'likes/likes', likeable: film %>
           </div>
