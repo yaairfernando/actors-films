@@ -7,7 +7,6 @@
           <%= link_to 'Back', films_path, class: "btn btn-primary" %>
           <div id="<%= @film.id %>_likes" class="likes">
             <%= render 'likes/likes', likeable: @film %>
-            <%= link_to 'Delete', film_like_path(@film), method: :delete %>
           </div>
         </div>
     </div>
