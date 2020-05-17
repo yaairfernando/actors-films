@@ -29,6 +29,7 @@ gem 'simple_form'
 gem 'hirb'
 gem 'gravatar_image_tag'
 gem 'devise'
+gem 'redis'
 
 group :production, :development, :test do
   gem 'cloudinary'

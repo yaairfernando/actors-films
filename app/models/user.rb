@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :actors, foreign_key: "creator_id"
   has_many :comments
   has_many :likes
+  has_many :notifications, as: :recipient
   
   def downcase
     email.downcase!

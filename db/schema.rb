@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_16_232414) do
+ActiveRecord::Schema.define(version: 2020_05_17_042714) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_05_16_232414) do
 
   create_table "films", force: :cascade do |t|
     t.string "image"
-    t.string "title"
+    t.string "name"
     t.integer "creator_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -49,6 +49,19 @@ ActiveRecord::Schema.define(version: 2020_05_16_232414) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["likeable_id"], name: "index_likes_on_likeable_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "recipient_id"
+    t.integer "user_id", null: false
+    t.string "action"
+    t.string "notifiable_type"
+    t.integer "notifiable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "m_name"
+    t.integer "m_id"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,4 +79,5 @@ ActiveRecord::Schema.define(version: 2020_05_16_232414) do
 
   add_foreign_key "actors", "users", column: "creator_id"
   add_foreign_key "films", "users", column: "creator_id"
+  add_foreign_key "notifications", "users"
 end

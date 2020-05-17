@@ -8,7 +8,7 @@
       <div class="card mb-2 mx-4" style="width: 30rem;">
         <img src="<%= film.image %>" class="card-img-top">
         <div class="card-body">
-          <h5 class="card-title"><%= link_to film.title, film_path(film) %></h5>
+          <h5 class="card-title"><%= link_to film.name, film_path(film) %></h5>
           <%= link_to 'Edit', edit_film_path(film), class: "btn btn-primary" %>
           <%= link_to 'Delete', film_path(film), method: :delete, data: { confirm: "Are you sure?"}, class: "btn btn-primary" %>
           <div id="<%= film.id %>_likes" class="likes">
