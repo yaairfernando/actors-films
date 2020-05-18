@@ -1,0 +1,2 @@
+console.log("CREATE")
+$(".<%= @user_id %>_follows").html("<%= j render partial: "follows/follows", locals: { user_id: @user_id } %>");

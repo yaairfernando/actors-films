@@ -5,7 +5,9 @@
   <% @users.each do |user| %>
     <div class="card">
       <h2><%= user.name %></h2>
-      <%= link_to "Follow", follow_user_path(user), method: :post %>
+      <div class="<%= user.id %>_follows" >
+        <%= render "follows/follows", user_id: user.id %>
+      </div>
     </div>
   <% end %>
 

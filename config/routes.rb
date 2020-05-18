@@ -21,6 +21,8 @@ Rails.application.routes.draw do
     resources :comments, module: :films, only: [:create, :destroy]
     resources :likes, module: :films, only: [:create, :destroy]
   end
+
+  resources :follows, only: [:create, :destroy]
   # delete 'films/:film_id/likes', to: 'likes#destroy', module: :films
   # delete 'actors/:actor_id/likes', to: 'likes#destroy', module: :actors
 end
