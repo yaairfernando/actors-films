@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_17_191159) do
+ActiveRecord::Schema.define(version: 2020_05_18_002218) do
 
   create_table "actors", force: :cascade do |t|
     t.string "name"
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 2020_05_17_191159) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "public_id"
     t.index ["creator_id"], name: "index_films_on_creator_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "likes", force: :cascade do |t|

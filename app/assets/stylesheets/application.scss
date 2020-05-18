@@ -28,6 +28,14 @@
    height: 23rem;
  }
 
+ a:visited {
+   color: #efd2d2;
+ }
+ 
+ a:hover {
+   background: transparent;
+ }
+
  .likes {
   display: flex;
   justify-content: flex-end;

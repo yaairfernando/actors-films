@@ -3,12 +3,16 @@ Rails.application.routes.draw do
   resources :events
   devise_for :users, :controllers => {:registrations => "registrations"}
   
-  resources :users do
+  resources :users, only: [:destroy] do
     member do
       post :follow
     end
   end
+
   resources :actors do
+    member do
+      post :bookmark
+    end
     resources :comments, module: :actors, only: [:create, :destroy]
     resources :likes, module: :actors, only: [:create, :destroy]
   end

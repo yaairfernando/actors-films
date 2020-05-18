@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_actor, only: [:show, :edit, :destroy]
+  before_action :find_actor, only: [:show, :edit, :destroy, :bookmark]
 
   def index
     @actors = Actor.all.order('created_at DESC')
@@ -41,6 +41,11 @@ class ActorsController < ApplicationController
   def destroy
     destroy_image(@actor.public_id)
     @actor.destroy
+    redirect_to actors_path
+  end
+
+  def bookmark
+    current_user.events.create(action: "bookmarked", eventable: @actor)
     redirect_to actors_path
   end
 
