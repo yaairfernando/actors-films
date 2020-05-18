@@ -1,7 +1,8 @@
 class FollowsController < ApplicationController
+  before_action :set_user, only: [:create]
   def create
-    @user_id = params[:user_id]
     current_user.follows.create(followed_id: params[:user_id])
+    current_user.events.where(action: "followed", eventable: @user).first_or_create
     respond_to do |format|
       format.html { redirect_to root_path  }
       format.js { render "follows/create"}
@@ -16,6 +17,13 @@ class FollowsController < ApplicationController
       # byebug
       format.js { render "follows/destroy"}
     end
+  end
+
+  private
+
+  def set_user
+    @user_id = params[:user_id]
+    @user = User.find(params[:user_id])
   end
 
 end

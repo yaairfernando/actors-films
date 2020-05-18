@@ -1,7 +1,0 @@
-<p id="notice"><%= notice %></p>
-<% @events.each do |event| %>
-  <% if lookup_context.template_exists?(event.action, "events/feeds", true) %>
-    <%= render "events/feeds/#{event.action}", event: event %>
-  <%end%>
-<% end %>
-

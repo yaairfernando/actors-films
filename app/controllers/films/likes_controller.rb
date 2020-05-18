@@ -6,6 +6,7 @@ class Films::LikesController < ApplicationController
 
   def create
     @likeable.likes.where(user_id: current_user.id).first_or_create
+    current_user.events.where(action: "liked", eventable: @likeable).first_or_create
     send_notification @likeable
     respond_to do |format|
       format.html { redirect_to @likeable }

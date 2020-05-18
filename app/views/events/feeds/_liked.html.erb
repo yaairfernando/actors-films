@@ -1,0 +1,8 @@
+<div>
+  <% if current_user.id != event.user.id %>
+    <%= event.user.name %>
+  <% end %>
+  <%= event.action %>
+  <%= event.eventable.name %>
+  <%= time_ago_in_words(event.created_at) %> ago..
+</div>

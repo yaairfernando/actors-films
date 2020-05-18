@@ -1,5 +1,14 @@
 <div>
-  <%= event.user.name %>
-  <%= event.action %>
-  <%= event.eventable.name %>
+  <% if current_user.id != event.user.id && current_user.name == event.eventable.name %>
+    <%= event.user.name %>
+    started following you
+  <% elsif current_user.id != event.user.id && current_user.name != event.eventable.name%>
+    <%= event.user.name %>
+    started following
+    <%= event.eventable.name %>
+  <% else %>
+    <%= event.action.titleize %>
+    <%= event.eventable.name %>
+  <% end %>
+  <%= time_ago_in_words(event.created_at) %> ago..
 </div>
