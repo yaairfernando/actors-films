@@ -1,9 +1,11 @@
+<%= javascript_pack_tag 'mentions'%>
 <div class="container">
   <div class="d-flex justify-content-center mt-5">
     <div class="card" style="width: 25rem; height: 32rem">
         <img src="<%= @actor.image %>" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title"><%= link_to @actor.name, actor_path(@actor) %></h5>
+          <span class="card-title"><%= verbose_date(@actor.published_at) %></span>
           <%= link_to 'Back', actors_path, class: "btn btn-primary" %>
           <div id="<%= @actor.id %>_likes" class="likes">
             <%= render 'likes/likes', likeable: @actor %>

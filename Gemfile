@@ -30,6 +30,8 @@ gem 'hirb'
 gem 'gravatar_image_tag'
 gem 'devise'
 gem 'redis'
+gem 'jquery-atwho-rails', '~> 1.5', '>= 1.5.4'
+gem 'tribute'
 
 group :production, :development, :test do
   gem 'cloudinary'

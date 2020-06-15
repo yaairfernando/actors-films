@@ -1,4 +1,5 @@
 <div>
+  <% if user_signed_in? %>
   <% if current_user.id != event.user.id && current_user.name == event.eventable.name %>
     <%= event.user.name %>
     started following you
@@ -11,4 +12,5 @@
     <%= event.eventable.name %>
   <% end %>
   <%= time_ago_in_words(event.created_at) %> ago..
+  <% end %>
 </div>

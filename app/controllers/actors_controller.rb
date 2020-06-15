@@ -1,6 +1,6 @@
 class ActorsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_actor, only: [:show, :edit, :destroy, :bookmark]
+  before_action :find_actor, only: [:show, :edit, :destroy, :bookmark, :update]
 
   def index
     @actors = Actor.all.order('created_at DESC')
@@ -23,6 +23,7 @@ class ActorsController < ApplicationController
   end
 
   def show
+    
   end
 
   def edit
@@ -30,7 +31,7 @@ class ActorsController < ApplicationController
 
   def update
     if @actor.update(actor_params)
-      update_image(params[:actor][:image], @actor)
+      update_image(params[:actor][:image], @actor) if !params[:actor][:image].nil?
       flash[:notice] = "Actor updated"
       redirect_to actors_path
     else
@@ -53,7 +54,7 @@ class ActorsController < ApplicationController
   private
 
   def actor_params
-    params.require(:actor).permit(:image, :name)
+    params.require(:actor).permit(:image, :name, :published_at, :status)
   end
 
   def find_actor

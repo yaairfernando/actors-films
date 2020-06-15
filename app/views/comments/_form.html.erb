@@ -1,9 +1,11 @@
-<%= simple_form_for([commentable, Comment.new]) do |f| %>
+<%= simple_form_for([commentable, Comment.new], html: { class: "form-horizontal"}) do |f| %>
   <div class="form-group">
-    <%= f.input :body, input_html: { class: "form-control" }%>
+    <%= f.input :body, input_html: { class: "form-control", id: "comment-box" }%>
   </div>
 
   <div class="form-group">
     <%= f.button :submit, class: "btn btn-primary"%>
   </div>
 <% end %>
+
+<div id="content-box-s"></div>
