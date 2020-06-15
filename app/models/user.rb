@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :notifications, as: :recipient
   has_many :events
+  has_many :tweets
   
   has_many :recieved_follows, foreign_key: :followed_id, class_name: "Follow"
   has_many :followers, through: :recieved_follows, source: :follower, dependent: :destroy

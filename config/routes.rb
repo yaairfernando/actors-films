@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :tweets do
+    member do
+      post :retweet
+    end
+  end
   root 'home#index'
   resources :events
   devise_for :users, :controllers => {:registrations => "registrations"}
