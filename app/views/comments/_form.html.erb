@@ -1,8 +1,11 @@
-<%= simple_form_for([commentable, Comment.new], html: { class: "form-horizontal"}) do |f| %>
+<%= javascript_pack_tag 'saved_messages' %>
+<%= simple_form_for([commentable, Comment.new], html: { class: "form-horizontal", data: { behaivor: "has-saved-messages"}}) do |f| %>
   <div class="form-group">
-    <%= f.input :body, input_html: { class: "form-control", id: "comment-box" }%>
+    <%= f.input :body, input_html: { class: "form-control", id: "comment-box", data: { behaivor: "comment-body"} }%>
   </div>
 
+  <%= link_to "Add new saved message", new_saved_message_path %>
+  <%= select_tag "saved_messages", options_for_select(SavedMessage.all.map{|sm| [sm.title, sm.id, data: { body: sm.body}] }), prompt: "Select a saved message", data: { behaivor: "saved-message-select"} %>
   <div class="form-group">
     <%= f.button :submit, class: "btn btn-primary"%>
   </div>

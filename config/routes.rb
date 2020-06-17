@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
+  get 'saved_messages/index'
+  get 'saved_messages/new'
+  get 'saved_messages/create'
+  get 'saved_messages/show'
+  get 'saved_messages/edit'
+  get 'saved_messages/update'
+  get 'saved_messages/destroy'
   resources :tweets do
     member do
       post :retweet
     end
   end
+
+  resources :saved_messages
 
   # SAME RESULT ADD SCOPE TO THE FOLDER STRUCTURE
   # resources :tweets, module: 'admin'
