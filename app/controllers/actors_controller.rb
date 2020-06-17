@@ -11,6 +11,7 @@ class ActorsController < ApplicationController
   end
 
   def create
+    byebug
     @actor = current_user.actors.build(actor_params)
 
     if @actor.save

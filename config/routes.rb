@@ -4,6 +4,30 @@ Rails.application.routes.draw do
       post :retweet
     end
   end
+
+  # SAME RESULT ADD SCOPE TO THE FOLDER STRUCTURE
+  # resources :tweets, module: 'admin'
+  # scope module: "admin" do
+  #   resources :tweets
+  # end
+  
+  # ADD SCOPE TO THE URL
+  # scope '/admin' do
+  #   resources :tweets
+  # end
+
+  # ADD SCOPE TO BOTH URL AND FOLDER STRUCTURE
+  # namespace 'admin' do
+  #   resources :tweets
+  # end
+
+  # concern :actorable do
+  #   resources :actors
+  # end
+
+  # resources :users, concerns: :actorable
+
+
   root 'home#index'
   resources :events
   devise_for :users, :controllers => {:registrations => "registrations"}
