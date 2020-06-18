@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  namespace :admin do
+      resources :users
+      resources :actors
+      resources :comments
+      resources :events
+      resources :films
+      resources :follows
+      resources :likes
+      resources :notifications
+      resources :saved_messages
+      resources :tweets
+
+      root to: "users#index"
+    end
   get 'saved_messages/index'
   get 'saved_messages/new'
   get 'saved_messages/create'

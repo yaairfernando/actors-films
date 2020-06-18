@@ -32,6 +32,8 @@ gem 'devise'
 gem 'redis'
 gem 'jquery-atwho-rails', '~> 1.5', '>= 1.5.4'
 gem 'tribute'
+gem 'devise_masquerade'
+gem "administrate"
 
 group :production, :development, :test do
   gem 'cloudinary'
