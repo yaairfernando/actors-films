@@ -37,6 +37,12 @@ group :production, :development, :test do
   gem 'cloudinary'
 end
 
+
+group :production do
+  gem 'pg'
+end
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
